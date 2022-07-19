@@ -1,0 +1,37 @@
+const changePlantState = (plant, property) => {
+  return {
+    ...plant,
+    [property]: (plant[property] || 0) + 1
+  }
+}
+
+// to call function:
+  // let plant = {soil: 0, light: 0, water: 0 }
+  // changePlantState(plant, "soil")
+  // { soil: 1, light: 0, water: 0 }
+
+
+//curry function:
+
+const changeState = (state) => {
+  return (value) => {
+    return (state) => ({
+      ...state,
+      [prop]: (state[prop] || 0) + value
+    })
+  }
+}
+
+// to call function:
+  // const feed = changeState("soil");
+  // const hydrate = changeState("water");
+  // const givelight = changeState("light");
+
+  // feed(value)(plant) ex: feed(5)(plant)
+  // or
+  // add value to the end:
+  // const blueFood = changeState("soil")(5)
+  //const yuckyFood = changeState("soil")(-5)
+
+  //This will increase a plant's food level by 5:
+  //blueFood(plant)
