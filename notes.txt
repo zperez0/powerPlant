@@ -12,7 +12,6 @@ const changePlantState = (plant, property) => {
 
 
 //curry function:
-
 const changeState = (state) => {
   return (value) => {
     return (state) => ({
@@ -28,10 +27,54 @@ const changeState = (state) => {
   // const givelight = changeState("light");
 
   // feed(value)(plant) ex: feed(5)(plant)
-  // or
+    // or
   // add value to the end:
-  // const blueFood = changeState("soil")(5)
-  //const yuckyFood = changeState("soil")(-5)
+        // const blueFood = changeState("soil")(5)
+        //const yuckyFood = changeState("soil")(-5)
 
   //This will increase a plant's food level by 5:
-  //blueFood(plant)
+    //blueFood(plant)
+
+
+
+// state function & storing the state
+const storeState = (initialState) => {
+  let currentState = initialState;
+  return (stateChangeFunction = state => state) => {
+    const newState = stateChangeFunction(currentState);
+    currentState = { ...newState };
+    return newState;
+  };
+};
+
+// initialState
+  // to initialize the plant with all properties
+    // in the future may want to set to a default object
+
+// Do not invoke the function that is passed into stateControl() like so:
+  // const fedPlant = stateControl(blueFood());
+    // only want to pass in the variable holding the function
+      // will get the following error:
+          // Uncaught TypeError: Cannot read property 'soil' of undefined
+            // b/c the function expects an object to be passed into blueFood
+              // add error handling to the function to deal with this
+
+// to see the current state:
+  // return (stateChangeFunction = state => state)
+    // if stateChangeFunction is undefined (no arguments passed in), the stateChangeFunction should be state => state
+      // to see the current state you just need to call stateControl() without arguments in order to return the current state
+
+
+// to store & invoke storeState()
+  const stateControl = storeState();
+
+// create functions using the function factory & call changeState()
+  const feed = changeState("soil")(1);
+  const blueFood = changeState("soil")(5);
+
+  const hydrate = changeState("water")(1);
+  const superWater = changeState("water")(5);
+
+// passing functions into stateControl()
+  const fedPlant = stateControl(blueFood);
+  const plantFedAgain = stateControl(feed);
