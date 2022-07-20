@@ -19,9 +19,9 @@
   This application was created to learn functional programming. A user can choose to water, feed, or give light to a plant. This app is not completed.
 
 #### WIP:
-    * _fix environment_ 
-    * _finish building out index.js(jQuery)_
-    * _complete html/css (add additional buttons, styling, etc)_   
+* _fix environment_ 
+* _finish building out index.js(jQuery)_
+* _complete html/css (add additional buttons, styling, etc)_   
 
 ## Setup/Installation Requirements
 *  _Go to [GitHub](https://github.com/zperez0/powerPlant.git)_
