@@ -1,5 +1,11 @@
 {
   "name": "powerPlant",
+  "eslintConfig": {
+    "plugins": [
+      "fp"
+    ],
+    "extends": "plugin:fp/recommended"
+  },
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
